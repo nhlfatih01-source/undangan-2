@@ -1,1 +1,976 @@
 # undangan-2
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joni & Verny | The Wedding</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Lightbox for Gallery -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff8da1;
+      --pink-light: #ffd1dc;
+      --blue: #89cff0;
+      --blue-light: #b5e4ff;
+      --purple: #c3a5ff;
+      --bg-light: #fff9fc;
+      --bg-dark: #1a1a2e;
+      --text-light: #2d2d2d;
+      --text-dark: #f0f0f0;
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark-mode .card, 
+    body.dark-mode .float-card,
+    body.dark-mode .nav-pills-custom,
+    body.dark-mode footer {
+      background: rgba(30, 30, 46, 0.9) !important;
+      color: #f0f0f0;
+      border-color: #444;
+    }
+
+    .romantic-gradient {
+      background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+    }
+
+    h1, h2, h3, .script-font {
+      font-family: 'Great Vibes', cursive;
+      letter-spacing: 2px;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .parallax-overlay {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(5px);
+      padding: 80px 0;
+    }
+
+    body.dark-mode .parallax-overlay {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .float-card {
+      border-radius: 4rem !important;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 20px 40px rgba(255, 141, 161, 0.2);
+      padding: 40px;
+      transition: transform 0.3s;
+    }
+
+    .float-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(45deg, var(--pink), var(--blue));
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 35px;
+      border-radius: 50px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(255, 141, 161, 0.4);
+    }
+
+    .btn-gradient:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 141, 161, 0.6);
+      color: white;
+    }
+
+    /* Navbar */
+    .navbar-custom {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 60px;
+      padding: 15px 30px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .navbar-custom {
+      background: rgba(30, 30, 46, 0.9);
+    }
+
+    .nav-link-custom {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      margin: 0 10px;
+      border-radius: 30px;
+      padding: 8px 20px !important;
+    }
+
+    body.dark-mode .nav-link-custom {
+      color: var(--text-dark) !important;
+    }
+
+    .nav-link-custom:hover,
+    .nav-link-custom.active {
+      background: linear-gradient(45deg, var(--pink), var(--blue));
+      color: white !important;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    /* Timeline Story */
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(var(--pink), var(--blue));
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      width: 100%;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      left: 0;
+      padding-right: 50%;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      left: 50%;
+      padding-left: 50px;
+    }
+
+    .timeline-content {
+      position: relative;
+      width: 50%;
+      padding: 20px;
+    }
+
+    .timeline-date {
+      position: absolute;
+      top: 20px;
+      width: 120px;
+      padding: 10px;
+      background: linear-gradient(45deg, var(--pink), var(--blue));
+      color: white;
+      border-radius: 30px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 9999;
+    }
+
+    .progress-bar-custom {
+      height: 4px;
+      background: linear-gradient(90deg, var(--pink), var(--blue));
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    /* Floating Action Buttons */
+    .fab-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .fab-main {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--pink), var(--blue));
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .fab-main:hover {
+      transform: scale(1.1) rotate(90deg);
+    }
+
+    .fab-options {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .fab-options.show {
+      display: flex;
+    }
+
+    .fab-option {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .fab-option:hover {
+      transform: scale(1.1);
+    }
+
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      transform: translateX(400px);
+      transition: transform 0.3s;
+      z-index: 9999;
+    }
+
+    .toast-notification.show {
+      transform: translateX(0);
+    }
+
+    /* Weather Widget */
+    .weather-widget {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 15px;
+      display: inline-block;
+    }
+
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      border-radius: 60px;
+      padding: 10px 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 999;
+      transform: translateX(400px);
+      transition: transform 0.3s;
+    }
+
+    .music-player.show {
+      transform: translateX(0);
+    }
+
+    /* QR Popup */
+    .qr-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 40px;
+      border-radius: 60px;
+      z-index: 9999;
+      box-shadow: 0 20px 60px rgba(255, 141, 161, 0.4);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .qr-popup.show {
+      display: block;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 9998;
+    }
+
+    /* Copy Button */
+    .copy-btn {
+      background: var(--blue-light);
+      border: none;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: var(--blue);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar-custom" id="progressBar"></div>
+  </div>
+
+  <!-- Popup Overlay -->
+  <div class="popup-overlay" id="popupOverlay"></div>
+
+  <!-- QR Popup -->
+  <div class="qr-popup" id="qrPopup">
+    <button class="btn-close float-end" onclick="toggleQR()"></button>
+    <h3 class="script-font text-center mb-4" style="color: var(--pink);">Check In / Check</h3>
+    <div class="text-center">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WEDDING|JONI&VERNY|190426" alt="QR Code" style="border-radius: 30px;">
+      <p class="mt-3 fw-bold">Scan untuk konfirmasi kehadiran</p>
+      <p class="text-muted">Kode: JV190426</p>
+      <button class="btn btn-gradient" onclick="showToast('QR Code berhasil discan!')">Simulasi Scan</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast">
+    <i class="fa-regular fa-circle-check me-2" style="color: var(--pink);"></i>
+    <span id="toastMessage">Notifikasi</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="container position-sticky top-0" style="z-index: 1020; top: 20px;">
+    <div class="navbar-custom d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <i class="fa-solid fa-heart" style="color: var(--pink);"></i>
+        <span class="mx-2 fw-bold script-font fs-4">J&V</span>
+        <i class="fa-solid fa-heart" style="color: var(--blue);"></i>
+      </div>
+      <div class="d-none d-md-flex">
+        <a class="nav-link-custom text-decoration-none" href="#home">Home</a>
+        <a class="nav-link-custom text-decoration-none" href="#story">Story</a>
+        <a class="nav-link-custom text-decoration-none" href="#gallery">Gallery</a>
+        <a class="nav-link-custom text-decoration-none" href="#wishes">Wishes</a>
+        <a class="nav-link-custom text-decoration-none" href="#gift">Gift</a>
+        <a class="nav-link-custom text-decoration-none" href="#location">Location</a>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-outline-secondary" onclick="toggleDarkMode()">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="btn btn-sm btn-outline-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title script-font">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column gap-3">
+      <a class="nav-link-custom text-decoration-none" href="#home" data-bs-dismiss="offcanvas">Home</a>
+      <a class="nav-link-custom text-decoration-none" href="#story" data-bs-dismiss="offcanvas">Story</a>
+      <a class="nav-link-custom text-decoration-none" href="#gallery" data-bs-dismiss="offcanvas">Gallery</a>
+      <a class="nav-link-custom text-decoration-none" href="#wishes" data-bs-dismiss="offcanvas">Wishes</a>
+      <a class="nav-link-custom text-decoration-none" href="#gift" data-bs-dismiss="offcanvas">Gift</a>
+      <a class="nav-link-custom text-decoration-none" href="#location" data-bs-dismiss="offcanvas">Location</a>
+    </div>
+  </div>
+
+  <!-- Floating Action Buttons -->
+  <div class="fab-container">
+    <button class="fab-main" onclick="toggleFAB()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <div class="fab-options" id="fabOptions">
+      <button class="fab-option" onclick="toggleQR()" title="Check In">
+        <i class="fa-solid fa-qrcode" style="color: var(--pink);"></i>
+      </button>
+      <button class="fab-option" onclick="toggleMusicPlayer()" title="Music">
+        <i class="fa-solid fa-music" style="color: var(--blue);"></i>
+      </button>
+      <button class="fab-option" onclick="shareWedding()" title="Share">
+        <i class="fa-solid fa-share" style="color: var(--purple);"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Music Player -->
+  <div class="music-player" id="musicPlayer">
+    <i class="fa-solid fa-heart" style="color: var(--pink);"></i>
+    <select id="musicSelect" class="form-select-sm border-0 bg-transparent" onchange="changeMusic(this.value)">
+      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Song 1 - Romantic</option>
+      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Song 2 - Sweet</option>
+      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Song 3 - Love</option>
+    </select>
+    <button class="btn btn-sm" onclick="togglePlay()">
+      <i class="fa-solid fa-play" id="playIcon"></i>
+    </button>
+    <audio id="bgMusic" loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <!-- Section Home -->
+  <section id="home" class="parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3'); min-height: 100vh;">
+    <div class="parallax-overlay d-flex align-items-center" style="min-height: 100vh;">
+      <div class="container text-center" data-aos="fade-up">
+        <h1 class="display-1 script-font mb-4">Joni & Verny</h1>
+        <div class="float-card mx-auto" style="max-width: 700px;">
+          <div class="weather-widget mb-4">
+            <i class="fa-solid fa-sun" style="color: #ffd700;"></i>
+            <span>Prakiraan: 28°C · Cerah</span>
+          </div>
+          <h2 class="mb-3">We're Getting Married!</h2>
+          <p class="fs-4">Minggu, 19 April 2026</p>
+          <p class="fs-5">09.00 WIB - Selesai</p>
+          <p><i class="fa-solid fa-location-dot me-2" style="color: var(--pink);"></i> Jalan Maju Mundur 12, Surabaya</p>
+          
+          <!-- Countdown -->
+          <div class="row mt-5" id="countdown">
+            <div class="col-3">
+              <div class="fs-1 fw-bold" id="days">00</div>
+              <div>Hari</div>
+            </div>
+            <div class="col-3">
+              <div class="fs-1 fw-bold" id="hours">00</div>
+              <div>Jam</div>
+            </div>
+            <div class="col-3">
+              <div class="fs-1 fw-bold" id="minutes">00</div>
+              <div>Menit</div>
+            </div>
+            <div class="col-3">
+              <div class="fs-1 fw-bold" id="seconds">00</div>
+              <div>Detik</div>
+            </div>
+          </div>
+
+          <!-- RSVP Button -->
+          <button class="btn btn-gradient mt-5" onclick="scrollToRSVP()">
+            <i class="fa-regular fa-envelope me-2"></i>Konfirmasi Kehadiran
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Story -->
+  <section id="story" style="background: linear-gradient(135deg, var(--pink-light) 0%, var(--blue-light) 100%);">
+    <div class="container">
+      <h2 class="text-center display-2 script-font mb-5" data-aos="fade-down">Our Story</h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-content float-card">
+            <div class="timeline-date">2018</div>
+            <h3 class="script-font">Pertama Bertemu</h3>
+            <p>Bertemu di acara organisasi kampus, Joni langsung jatuh hati pada senyuman Verny.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-content float-card">
+            <div class="timeline-date">2020</div>
+            <h3 class="script-font">Mulai Serius</h3>
+            <p>Hubungan makin dekat, saling mendukung dalam karir dan impian masing-masing.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-content float-card">
+            <div class="timeline-date">2023</div>
+            <h3 class="script-font">Lamaran</h3>
+            <p>Joni melamar Verny di tempat pertama mereka bertemu, dengan latar matahari terbenam.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-content float-card">
+            <div class="timeline-date">2026</div>
+            <h3 class="script-font">Pernikahan</h3>
+            <p>Akhirnya kami akan bersatu dalam ikatan suci pernikahan. Doakan ya teman-teman!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="text-center display-2 script-font mb-5" data-aos="fade-down">Pre-Wedding Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-aos="zoom-in">
+          <a href="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3" data-lightbox="wedding" data-title="Romantic Moment">
+            <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&w=400" alt="Gallery 1">
+            <div class="gallery-overlay">
+              <h5 class="script-font">Romantic</h5>
+            </div>
+          </a>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+          <a href="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3" data-lightbox="wedding" data-title="Beautiful Couple">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&w=400" alt="Gallery 2">
+            <div class="gallery-overlay">
+              <h5 class="script-font">Elegant</h5>
+            </div>
+          </a>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+          <a href="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3" data-lightbox="wedding" data-title="Special Day">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&w=400" alt="Gallery 3">
+            <div class="gallery-overlay">
+              <h5 class="script-font">Special</h5>
+            </div>
+          </a>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+          <a href="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3" data-lightbox="wedding" data-title="Love Story">
+            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&w=400" alt="Gallery 4">
+            <div class="gallery-overlay">
+              <h5 class="script-font">Forever</h5>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Wishes with RSVP -->
+  <section id="wishes" class="parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3');">
+    <div class="parallax-overlay">
+      <div class="container">
+        <h2 class="text-center display-2 script-font mb-5" data-aos="fade-down">Ucapan & RSVP</h2>
+        <div class="row">
+          <div class="col-md-6 mb-4" data-aos="fade-right">
+            <div class="float-card h-100">
+              <h3 class="script-font mb-4">Tulis Ucapan</h3>
+              <form id="wishForm">
+                <div class="mb-3">
+                  <input type="text" class="form-control rounded-pill" id="wishName" placeholder="Nama Anda" required>
+                </div>
+                <div class="mb-3">
+                  <textarea class="form-control rounded-4" id="wishMessage" rows="3" placeholder="Ucapan selamat..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gradient w-100">Kirim Ucapan</button>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4" data-aos="fade-left">
+            <div class="float-card h-100">
+              <h3 class="script-font mb-4">RSVP</h3>
+              <form id="rsvpForm">
+                <div class="mb-3">
+                  <input type="text" class="form-control rounded-pill" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="mb-3">
+                  <select class="form-select rounded-pill">
+                    <option>Hadir</option>
+                    <option>Tidak Hadir</option>
+                    <option>Masih Ragu</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <input type="number" class="form-control rounded-pill" placeholder="Jumlah Tamu" min="1" max="5">
+                </div>
+                <button type="submit" class="btn btn-gradient w-100">Kirim Konfirmasi</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Live Ucapan -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="float-card">
+              <h3 class="script-font mb-4">Live Ucapan <i class="fa-regular fa-heart ms-2" style="color: var(--pink);"></i></h3>
+              <div id="wishesContainer" style="max-height: 400px; overflow-y: auto;">
+                <!-- Ucapan akan ditampilkan disini -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Gift -->
+  <section id="gift">
+    <div class="container">
+      <h2 class="text-center display-2 script-font mb-5" data-aos="fade-down">Wedding Gift</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4" data-aos="flip-left">
+          <div class="float-card text-center h-100">
+            <i class="fa-solid fa-building-columns fa-3x mb-3" style="color: var(--blue);"></i>
+            <h4>Bank Transfer</h4>
+            <p class="mb-2"><strong>BCA</strong> 12374892</p>
+            <p class="mb-2"><strong>Mandiri</strong> 9876543210</p>
+            <p class="mb-2"><strong>BRI</strong> 5550012345</p>
+            <p class="text-muted">a.n. Joni Hamarlambang</p>
+            <button class="copy-btn" onclick="copyAllRek()">Copy Semua</button>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+          <div class="float-card text-center h-100">
+            <i class="fa-solid fa-wallet fa-3x mb-3" style="color: var(--pink);"></i>
+            <h4>E-Wallet</h4>
+            <p><strong>OVO</strong> 081234567890</p>
+            <p><strong>DANA</strong> 081234567890</p>
+            <p><strong>GoPay</strong> 081234567890</p>
+            <button class="copy-btn" onclick="copyEwallet()">Copy Semua</button>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+          <div class="float-card text-center h-100">
+            <i class="fa-solid fa-gift fa-3x mb-3" style="color: var(--purple);"></i>
+            <h4>Kirim Kado Fisik</h4>
+            <p>Jalan Maju Mundur 12</p>
+            <p>Surabaya, Jawa Timur</p>
+            <p>Kode Pos 60123</p>
+            <button class="copy-btn" onclick="copyAddress()">Copy Alamat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Location -->
+  <section id="location" class="parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69c07b?ixlib=rb-4.0.3');">
+    <div class="parallax-overlay">
+      <div class="container">
+        <h2 class="text-center display-2 script-font mb-5" data-aos="fade-down">Location</h2>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="float-card text-center" data-aos="zoom-in">
+              <h3 class="mb-4">Gedung Serbaguna Maju Mundur</h3>
+              <p class="fs-5">Jalan Maju Mundur No. 12, Surabaya</p>
+              <p><i class="fa-regular fa-clock me-2"></i> Minggu, 19 April 2026 · 09.00 WIB</p>
+              
+              <!-- Protokol Kesehatan -->
+              <div class="alert alert-info rounded-pill mt-4" style="background: var(--blue-light);">
+                <i class="fa-solid fa-shield-heart me-2"></i>
+                Protokol Kesehatan: Wajib masker & cuci tangan
+              </div>
+              
+              <!-- Maps -->
+              <div class="ratio ratio-16x9 mt-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.123456789!2d112.6994013!3d-7.2823682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMTYnNTYuNSJTIDExMsKwNDEnNTcuOCJF!5e0!3m2!1sen!2sid!4v1234567890" style="border:0; border-radius: 30px;" allowfullscreen></iframe>
+              </div>
+              
+              <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=-7.2823682,112.6994013" target="_blank" class="btn btn-gradient">
+                  <i class="fa-brands fa-google me-2"></i>Google Maps
+                </a>
+                <a href="https://maps.apple.com/?daddr=-7.2823682,112.6994013" target="_blank" class="btn btn-outline-primary">
+                  <i class="fa-brands fa-apple me-2"></i>Apple Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-5">
+    <div class="container">
+      <h3 class="script-font mb-4">Joni & Verny</h3>
+      <p>#JoniVernyForever</p>
+      <p class="small text-muted">Made with <i class="fa-solid fa-heart" style="color: var(--pink);"></i> for the happy couple</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Progress Bar
+    window.onscroll = function() {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + "%";
+    };
+
+    // Countdown
+    function updateCountdown() {
+      const weddingDate = new Date("April 19, 2026 09:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+
+      document.getElementById('days').innerHTML = Math.floor(diff / (1000*60*60*24));
+      document.getElementById('hours').innerHTML = Math.floor((diff % (86400000)) / (3600000));
+      document.getElementById('minutes').innerHTML = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('seconds').innerHTML = Math.floor((diff % 60000) / 1000);
+    }
+    setInterval(updateCountdown, 1000);
+
+    // Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+
+    // Load dark mode preference
+    if(localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+
+    // QR Popup
+    function toggleQR() {
+      document.getElementById('qrPopup').classList.toggle('show');
+      document.getElementById('popupOverlay').style.display = 
+        document.getElementById('qrPopup').classList.contains('show') ? 'block' : 'none';
+    }
+
+    // Toast
+    function showToast(message) {
+      document.getElementById('toastMessage').innerText = message;
+      document.getElementById('toast').classList.add('show');
+      setTimeout(() => {
+        document.getElementById('toast').classList.remove('show');
+      }, 3000);
+    }
+
+    // FAB Menu
+    function toggleFAB() {
+      document.getElementById('fabOptions').classList.toggle('show');
+    }
+
+    // Music Player
+    let isPlaying = false;
+    const music = document.getElementById('bgMusic');
+    const playIcon = document.getElementById('playIcon');
+
+    function toggleMusicPlayer() {
+      document.getElementById('musicPlayer').classList.toggle('show');
+    }
+
+    function togglePlay() {
+      if(isPlaying) {
+        music.pause();
+        playIcon.className = 'fa-solid fa-play';
+      } else {
+        music.play();
+        playIcon.className = 'fa-solid fa-pause';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function changeMusic(src) {
+      music.src = src;
+      if(isPlaying) {
+        music.play();
+      }
+    }
+
+    // Copy Functions
+    function copyAllRek() {
+      const rek = 'BCA 12374892, Mandiri 9876543210, BRI 5550012345';
+      navigator.clipboard.writeText(rek);
+      showToast('Nomor rekening berhasil disalin!');
+    }
+
+    function copyEwallet() {
+      navigator.clipboard.writeText('OVO 081234567890, DANA 081234567890, GoPay 081234567890');
+      showToast('Nomor e-wallet berhasil disalin!');
+    }
+
+    function copyAddress() {
+      navigator.clipboard.writeText('Jalan Maju Mundur 12, Surabaya, Jawa Timur 60123');
+      showToast('Alamat berhasil disalin!');
+    }
+
+    // Share Wedding
+    function shareWedding() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Undangan Pernikahan Joni & Verny',
+          text: 'Kami menikah! Minggu, 19 April 2026 di Surabaya',
+          url: window.location.href
+        });
+      } else {
+        showToast('Link undangan telah disalin!');
+        navigator.clipboard.writeText(window.location.href);
+      }
+    }
+
+    // Ucapan System with localStorage
+    let wishes = JSON.parse(localStorage.getItem('wishes')) || [
+      {name: 'Budi', message: 'Selamat menempuh hidup baru! 🎉'},
+      {name: 'Ani', message: 'Semoga langgeng selalu Joni & Verny ❤️'},
+      {name: 'Sari', message: 'Bahagia terus ya kalian!'}
+    ];
+
+    function displayWishes() {
+      const container = document.getElementById('wishesContainer');
+      container.innerHTML = '';
+      wishes.slice().reverse().forEach(wish => {
+        container.innerHTML += `
+          <div class="chat-toast mb-3 p-3 bg-white rounded-4 shadow-sm">
+            <strong>${wish.name}:</strong> ${wish.message}
+          </div>
+        `;
+      });
+    }
+
+    document.getElementById('wishForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('wishName').value;
+      const message = document.getElementById('wishMessage').value;
+      
+      wishes.push({name, message});
+      localStorage.setItem('wishes', JSON.stringify(wishes));
+      displayWishes();
+      
+      this.reset();
+      showToast('Ucapan berhasil dikirim! Terima kasih ❤️');
+    });
+
+    displayWishes();
+
+    // RSVP Form
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('Terima kasih sudah konfirmasi! 🎉');
+      this.reset();
+    });
+
+    // Scroll to RSVP
+    function scrollToRSVP() {
+      document.getElementById('wishes').scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Close popup when click overlay
+    document.getElementById('popupOverlay').addEventListener('click', toggleQR);
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Auto play music after user interaction
+    document.addEventListener('click', function initMusic() {
+      music.play().catch(() => {});
+      document.removeEventListener('click', initMusic);
+    }, { once: true });
+  </script>
+</body>
+</html>
